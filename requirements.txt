@@ -1,2 +1,2 @@
-eclipse-zenoh==0.7.2rc0
+zenoh-cli==0.1.1
 parse==1.19.1
