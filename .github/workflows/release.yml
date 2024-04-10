@@ -22,8 +22,8 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - 
-        name: Generating tags
-        id: docker_tags
+        name: Generating metadata
+        id: docker_metadata
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
@@ -37,7 +37,8 @@ jobs:
         with:
           file: Dockerfile
           push: true
-          tags: ${{ steps.docker_tags.outputs.tags }}
+          tags: ${{ steps.docker_metadata.outputs.tags }}
+          labels: ${{ steps.docker_metadata.outputs.labels }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
