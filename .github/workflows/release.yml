@@ -22,6 +22,12 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       -
+        name: set lower case owner name
+        run: |
+          echo "GITHUB_REPOSITORY_LC=${GITHUB_REPOSITORY@L}" >>${GITHUB_ENV}
+        env:
+          GITHUB_REPOSITORY: '${{ github.repository }}'
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v5
@@ -29,8 +35,8 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.event.release.tag_name }}
+            ghcr.io/$GITHUB_REPOSITORY_LC:latest
+            ghcr.io/$GITHUB_REPOSITORY_LC:${{ github.event.release.tag_name }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
