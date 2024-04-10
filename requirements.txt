@@ -2,4 +2,4 @@ zenoh-cli==0.5.0
 parse==1.20.1
 
 # Codecs
-keelson==0.3.0
+keelson==0.3.1
