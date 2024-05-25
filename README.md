@@ -23,7 +23,7 @@ version: '3.8'
 
 services:
     sink_1:
-        image: ghcr.io/mo-rise/porla-zenoh
+        image: ghcr.io/rise-maritime/porla-zenoh
         network_mode: host
         restart: always
         command: ["from_bus 3 | zenoh put --key my/key/expression --line '{message}'"]
