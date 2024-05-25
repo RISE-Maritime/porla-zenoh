@@ -1,4 +1,4 @@
-FROM ghcr.io/mo-rise/porla:v0.4.0
+FROM ghcr.io/rise-maritime/porla:v0.4.1
 
 COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
